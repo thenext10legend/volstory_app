@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:volstory_app/screens/interests_screen.dart';
 import 'package:volstory_app/screens/otp_screen.dart';
 import 'package:volstory_app/screens/registration_screen.dart';
 import 'package:volstory_app/screens/signUp_signIn_screen.dart';
+import 'package:volstory_app/screens/skills_screen.dart';
 import 'package:volstory_app/screens/splash_screen.dart';
 import 'package:volstory_app/screens/verification_screen.dart';
 
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
         '/otp': (context) => const OTPScreen(),
         '/registration': (context) => const RegistrationScreen(),
         '/signUpsignIn': (context) => const SignUpSignInScreen(),
-        '/interests': (context) => const InterestsScreen(),
+        '/interests': (context) => const SkillsScreen(),
       },
     );
   }
