@@ -147,7 +147,7 @@ class _SkillsScreenState extends State<SkillsScreen> {
               width: double.infinity,
               child: MaterialButton(
                 onPressed: () {
-                  Navigator.pushReplacementNamed(context, '/interests');
+                  Navigator.pushReplacementNamed(context, '/tabs');
                 },
                 color: const Color.fromRGBO(1, 163, 159, 100),
                 shape: RoundedRectangleBorder(
