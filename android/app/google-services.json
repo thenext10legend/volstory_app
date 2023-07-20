@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "748662730265",
+    "project_id": "volstory-7c8bc",
+    "storage_bucket": "volstory-7c8bc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:748662730265:android:44db6444e853c9d9a60488",
+        "android_client_info": {
+          "package_name": "com.example.volstory_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "748662730265-uiqs1rpc8n328bpoaqru0r9vcpd9fd3g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.volstory_app",
+            "certificate_hash": "a371b8698e2606f023a3d1ccbae329208b4e2ba3"
+          }
+        },
+        {
+          "client_id": "748662730265-dpuc3j5dvpp78888pf6fjr8tuh5esbd8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAP6c4mKgTax-geH1YzqhcRjggKszT_MA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "748662730265-dpuc3j5dvpp78888pf6fjr8tuh5esbd8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
