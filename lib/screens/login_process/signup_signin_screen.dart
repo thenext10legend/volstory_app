@@ -1,7 +1,9 @@
 // ignore_for_file: sized_box_for_whitespace
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:volstory_app/services/auth_Service.dart';
 
 class SignUpSignInScreen extends StatefulWidget {
   const SignUpSignInScreen({super.key});
@@ -64,7 +66,10 @@ class _SignUpSignInScreenState extends State<SignUpSignInScreen> {
               height: 24,
             ),
             OutlinedButton(
-              onPressed: () {},
+              onPressed: () async {
+                await AuthService().signInWithGoogle();
+                Navigator.of(context).pushReplacementNamed("/registration");
+              },
               style: OutlinedButton.styleFrom(
                 backgroundColor: Colors.white,
                 padding:
