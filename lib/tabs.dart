@@ -57,7 +57,10 @@ class _TabsScreenState extends State<TabsScreen> {
                                 "Create Event",
                                 style: GoogleFonts.nunito(fontSize: 18),
                               ),
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.of(context).pop();
+                                Navigator.of(context).pushNamed('/step1');
+                              },
                             ),
                             ListTile(
                               leading: Icon(

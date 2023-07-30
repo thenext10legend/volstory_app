@@ -6,6 +6,9 @@ import 'package:volstory_app/screens/login_process/signup_signin_screen.dart';
 import 'package:volstory_app/screens/login_process/skills_screen.dart';
 import 'package:volstory_app/screens/login_process/splash_screen.dart';
 import 'package:volstory_app/screens/login_process/verification_screen.dart';
+import 'package:volstory_app/screens/main_pages/create_event/step_1/step_1.dart';
+import 'package:volstory_app/screens/main_pages/create_event/step_2/step_2.dart';
+
 import 'package:volstory_app/tabs.dart';
 
 void main() {
@@ -35,7 +38,9 @@ class MyApp extends StatelessWidget {
         '/registration': (context) => const RegistrationScreen(),
         '/signUpsignIn': (context) => const SignUpSignInScreen(),
         '/interests': (context) => const SkillsScreen(),
-        '/tabs': (context) => const TabsScreen()
+        '/tabs': (context) => const TabsScreen(),
+        '/step1': (context) => const Step1(),
+        '/step2': (context) => const Step2(),
       },
     );
   }

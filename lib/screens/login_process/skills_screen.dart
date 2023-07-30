@@ -86,6 +86,7 @@ class _SkillsScreenState extends State<SkillsScreen> {
               spacing: 6.0,
               runSpacing: 6.0,
               children: [
+                // chips not working yet have to change to flutterchip for better results
                 InputChip(
                   label: const Text(
                     "Plantation",

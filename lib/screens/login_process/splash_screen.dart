@@ -14,8 +14,8 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    _splashPage().then(
-        (value) => Navigator.pushReplacementNamed(context, '/signUpsignIn'));
+    _splashPage()
+        .then((value) => Navigator.pushReplacementNamed(context, '/tabs'));
   }
 
   Future<void> _splashPage() async {
