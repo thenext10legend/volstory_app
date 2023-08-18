@@ -15,7 +15,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     _splashPage()
-        .then((value) => Navigator.pushReplacementNamed(context, '/tabs'));
+        .then((value) => Navigator.pushReplacementNamed(context, '/step2'));
   }
 
   Future<void> _splashPage() async {

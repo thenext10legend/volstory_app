@@ -14,6 +14,7 @@ class _Step1State extends State<Step1> {
   static final _formKey = GlobalKey<FormState>();
   static final _virtualFormKey = GlobalKey<FormState>();
   static bool isVirtualEvent = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -124,19 +125,22 @@ class _Step1State extends State<Step1> {
                             thickness: 2,
                             color: Color.fromRGBO(242, 242, 245, 100),
                           ),
-                    Form(
-                      key: _virtualFormKey,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 8.0, horizontal: 16.0),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 8.0, horizontal: 16.0),
+                      child: Form(
+                        key: _virtualFormKey,
                         child: isVirtualEvent
-                            ? _textFormFieldCreateEvent(context,
+                            ? _textFormFieldCreateEvent(
+                                context,
                                 label: "Enter link (optional)",
-                                icon: Icon(Icons.link))
+                                preffixIcon: Icon(Icons.link),
+                                textInputType: TextInputType.url,
+                              )
                             : _textFormFieldCreateEvent(
                                 context,
                                 label: "Enter Location",
-                                icon: Icon(Icons.location_pin),
+                                preffixIcon: Icon(Icons.location_pin),
                                 readOnly: true,
                                 onTap: () {
                                   _locationBottomSheet(context);
@@ -151,9 +155,11 @@ class _Step1State extends State<Step1> {
                         width: double.infinity,
                         child: MaterialButton(
                           onPressed: () {
-                            setState(() {
+                            if (_formKey.currentState!.validate() &&
+                                _virtualFormKey.currentState!.validate()) {
                               Navigator.pushNamed(context, '/step2');
-                            });
+                            }
+                            Navigator.pushNamed(context, '/step2');
                           },
                           color: const Color.fromRGBO(1, 163, 159, 100),
                           shape: RoundedRectangleBorder(
@@ -210,15 +216,19 @@ Widget _addCoverPhoto() {
 }
 
 Widget _textFormFieldCreateEvent(BuildContext context,
-    {Icon? icon,
+    {Icon? preffixIcon,
     String label = "",
     String? hintText,
     bool readOnly = false,
     Function()? onTap,
     TextAlign textAlign = TextAlign.left,
-    Color inputTextColor = Colors.black}) {
+    Color inputTextColor = Colors.black,
+    TextInputType textInputType = TextInputType.text,
+    FontWeight inputTextFontWeight = FontWeight.normal}) {
   return TextFormField(
-    style: TextStyle(color: inputTextColor),
+    textCapitalization: TextCapitalization.sentences,
+    style: TextStyle(color: inputTextColor, fontWeight: inputTextFontWeight),
+    keyboardType: textInputType,
     textAlign: textAlign,
     maxLines: null,
     minLines: 1,
@@ -234,7 +244,7 @@ Widget _textFormFieldCreateEvent(BuildContext context,
         fontSize: 15,
         color: Color.fromRGBO(99, 99, 102, 100),
       ),
-      prefixIcon: icon,
+      prefixIcon: preffixIcon,
       prefixIconColor: Color.fromRGBO(99, 99, 102, 100),
       label: Text(
         label,
@@ -256,6 +266,18 @@ Widget _textFormFieldCreateEvent(BuildContext context,
         ),
       ),
     ),
+    validator: (value) {
+      if (textInputType == TextInputType.text && value!.isEmpty) {
+        return "Enter valid input";
+      }
+      if (textInputType == TextInputType.url &&
+          value!.isEmpty &&
+          !isValidURL(value)) {
+        return "Enter valid input";
+      } else {
+        return null;
+      }
+    },
   );
 }
 
@@ -270,7 +292,8 @@ Widget _createEventForm(BuildContext context, Key formKey) {
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.015,
             ),
-            _textFormFieldCreateEvent(context, label: "Title"),
+            _textFormFieldCreateEvent(context,
+                label: "Title", inputTextFontWeight: FontWeight.bold),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.03,
             ),
@@ -299,13 +322,23 @@ Widget _createEventForm(BuildContext context, Key formKey) {
 
 Future _locationBottomSheet(BuildContext context) {
   return showModalBottomSheet(
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(20.0),
+        ),
+      ),
       isScrollControlled: true,
       useSafeArea: true,
       context: context,
       builder: (context) {
         return Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.vertical(
+              top: Radius.circular(16),
+            ),
+          ),
           height: MediaQuery.of(context).size.height * 0.8,
-          color: Colors.white,
           child: Column(
             children: [
               SizedBox(
@@ -316,7 +349,7 @@ Future _locationBottomSheet(BuildContext context) {
                 child: _textFormFieldCreateEvent(
                   context,
                   hintText: "Search for area, street name",
-                  icon: Icon(Icons.search_outlined),
+                  preffixIcon: Icon(Icons.search_outlined),
                 ),
               ),
               TextButton.icon(
@@ -351,16 +384,17 @@ Future _locationBottomSheet(BuildContext context) {
                         color: Color.fromRGBO(242, 242, 245, 100),
                       ),
                       TextButton(
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          },
-                          child: Text(
-                            "Close",
-                            style: GoogleFonts.nunito(
-                              color: Color.fromRGBO(253, 87, 87, 100),
-                              fontSize: 18,
-                            ),
-                          )),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: Text(
+                          "Close",
+                          style: GoogleFonts.nunito(
+                            color: Color.fromRGBO(253, 87, 87, 100),
+                            fontSize: 18,
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -369,4 +403,13 @@ Future _locationBottomSheet(BuildContext context) {
           ),
         );
       });
+}
+
+bool isValidURL(String url) {
+  try {
+    Uri.parse(url);
+    return true;
+  } catch (e) {
+    return false;
+  }
 }
