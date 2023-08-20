@@ -8,6 +8,7 @@ import 'package:volstory_app/screens/login_process/splash_screen.dart';
 import 'package:volstory_app/screens/login_process/verification_screen.dart';
 import 'package:volstory_app/screens/main_pages/create_event/step_1/step_1.dart';
 import 'package:volstory_app/screens/main_pages/create_event/step_2/step_2.dart';
+import 'package:volstory_app/screens/main_pages/create_event/step_3/step_3.dart';
 
 import 'package:volstory_app/tabs.dart';
 
@@ -41,6 +42,7 @@ class MyApp extends StatelessWidget {
         '/tabs': (context) => const TabsScreen(),
         '/step1': (context) => const Step1(),
         '/step2': (context) => const Step2(),
+        '/step3': (context) => const Step3(),
       },
     );
   }
