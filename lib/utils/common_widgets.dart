@@ -19,7 +19,7 @@ Widget bottomAppbar(int step) {
         Container(
           width: 66.0,
           height: 2.0,
-          color: step == 1
+          color: step >= 1
               ? const Color.fromRGBO(1, 163, 159, 100)
               : const Color.fromRGBO(229, 229, 234, 100),
         ),
@@ -27,7 +27,7 @@ Widget bottomAppbar(int step) {
         Container(
           width: 66.0,
           height: 2.0,
-          color: step == 2
+          color: step >= 2
               ? const Color.fromRGBO(1, 163, 159, 100)
               : const Color.fromRGBO(229, 229, 234, 100),
         ),
@@ -35,7 +35,7 @@ Widget bottomAppbar(int step) {
         Container(
           width: 66.0,
           height: 2.0,
-          color: step == 3
+          color: step >= 3
               ? const Color.fromRGBO(1, 163, 159, 100)
               : const Color.fromRGBO(229, 229, 234, 100),
         ),
@@ -43,7 +43,7 @@ Widget bottomAppbar(int step) {
         Container(
           width: 66.0,
           height: 2.0,
-          color: step == 4
+          color: step >= 4
               ? const Color.fromRGBO(1, 163, 159, 100)
               : const Color.fromRGBO(229, 229, 234, 100),
         ),

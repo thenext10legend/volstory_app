@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:quantity_input/quantity_input.dart';
 
+import '../../../../utils/common_widgets.dart';
+
 class Step2 extends StatefulWidget {
   const Step2({super.key});
   static bool setCustomRecurrence = false;
@@ -44,7 +46,7 @@ class _Step2State extends State<Step2> {
               // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               shrinkWrap: true,
               children: [
-                _bottomAppbar(2),
+                bottomAppbar(2),
                 Padding(
                   padding: const EdgeInsets.all(16),
                   child: Text(
@@ -939,8 +941,7 @@ class _Step2State extends State<Step2> {
                                                           setState(() {
                                                             Navigator.of(
                                                                     context)
-                                                                .pushNamed(
-                                                                    '/step3');
+                                                                .pop();
                                                           });
                                                         },
                                                         color: const Color
@@ -1146,7 +1147,7 @@ class _Step2State extends State<Step2> {
                         width: double.infinity,
                         child: MaterialButton(
                           onPressed: () {
-                            Navigator.of(context).pop();
+                            Navigator.of(context).pushNamed('/step3');
                           },
                           color: const Color.fromRGBO(1, 163, 159, 100),
                           shape: RoundedRectangleBorder(
@@ -1348,47 +1349,4 @@ Widget _eventTimeSlotsMembersCount(int value, Function(String) onChanged,
       //   });
       // },
       );
-}
-
-Widget _bottomAppbar(int step) {
-  return Container(
-    height: 30.0,
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(
-          "Step  $step/4",
-          style: GoogleFonts.nunito(
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-            color: const Color.fromRGBO(1, 163, 159, 100),
-          ),
-        ),
-        const SizedBox(width: 10.0),
-        Container(
-          width: 66.0,
-          height: 2.0,
-          color: const Color.fromRGBO(1, 163, 159, 100),
-        ),
-        const SizedBox(width: 10.0),
-        Container(
-          width: 66.0,
-          height: 2.0,
-          color: const Color.fromRGBO(1, 163, 159, 100),
-        ),
-        const SizedBox(width: 10.0),
-        Container(
-          width: 66.0,
-          height: 2.0,
-          color: const Color.fromRGBO(229, 229, 234, 100),
-        ),
-        const SizedBox(width: 10.0),
-        Container(
-          width: 66.0,
-          height: 2.0,
-          color: const Color.fromRGBO(229, 229, 234, 100),
-        ),
-      ],
-    ),
-  );
 }
