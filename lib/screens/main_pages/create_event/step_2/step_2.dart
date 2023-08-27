@@ -188,535 +188,535 @@ class _Step2State extends State<Step2> {
                   thickness: 2,
                   color: Color.fromRGBO(242, 242, 245, 100),
                 ),
-                ListTile(
-                  title: Row(
-                    children: [
-                      Text(
-                        "Recurring event",
-                        style: GoogleFonts.nunito(
-                          fontSize: 18,
-                          color: const Color.fromRGBO(72, 72, 74, 100),
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      const Icon(
-                        Icons.info_outline_rounded,
-                        color: Color.fromRGBO(1, 163, 159, 100),
-                      ),
-                    ],
-                  ),
-                  trailing: Switch(
-                    inactiveThumbColor: Colors.white,
-                    activeColor: const Color.fromRGBO(1, 163, 159, 100),
-                    value: Step2.isRecurringEvent,
-                    onChanged: (value) {
-                      if (value == true) {
-                        int? groupValue = 0;
-                        int? selectedEndDate = 0;
-                        showModalBottomSheet(
-                            isScrollControlled: true,
-                            useSafeArea: true,
-                            shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.vertical(
-                                top: Radius.circular(20.0),
-                              ),
-                            ),
-                            context: context,
-                            builder: (context) {
-                              return StatefulBuilder(
-                                  builder: (context, setState) {
-                                return SingleChildScrollView(
-                                  child: Container(
-                                    decoration: const BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.vertical(
-                                        top: Radius.circular(16),
-                                      ),
-                                    ),
-                                    width: double.infinity,
-                                    height: MediaQuery.of(context).size.height *
-                                        0.9,
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 8.0,
-                                        vertical: 16,
-                                      ),
-                                      child: Step2.setCustomRecurrence
-                                          ? Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                ListTile(
-                                                  title: Text(
-                                                    "Set custom reccurence",
-                                                    style: GoogleFonts.nunito(
-                                                      fontSize: 18,
-                                                      color:
-                                                          const Color.fromRGBO(
-                                                              1, 163, 159, 100),
-                                                    ),
-                                                  ),
-                                                  trailing: Switch(
-                                                    inactiveThumbColor:
-                                                        Colors.white,
-                                                    activeColor:
-                                                        const Color.fromRGBO(
-                                                            1, 163, 159, 100),
-                                                    value: Step2
-                                                        .setCustomRecurrence,
-                                                    onChanged: (value) {
-                                                      setState(() {
-                                                        Step2.setCustomRecurrence =
-                                                            value;
-                                                      });
-                                                    },
-                                                  ),
-                                                ),
-                                                const Divider(
-                                                  thickness: 2,
-                                                  color: Color.fromRGBO(
-                                                      242, 242, 245, 100),
-                                                ),
-                                                RadioListTile(
-                                                  activeColor:
-                                                      const Color.fromRGBO(
-                                                          1, 163, 159, 100),
-                                                  value: 0,
-                                                  groupValue: groupValue,
-                                                  title: Text(
-                                                    "Repeat Every",
-                                                    style: GoogleFonts.nunito(
-                                                      fontSize: 18,
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                    ),
-                                                  ),
-                                                  subtitle: groupValue == 0
-                                                      ? repeatEveryTileSubTitle()
-                                                      : null,
-                                                  onChanged: (value) {
-                                                    setState(() {
-                                                      groupValue = value;
-                                                    });
-                                                  },
-                                                ),
-                                                const Divider(
-                                                  thickness: 2,
-                                                  color: Color.fromRGBO(
-                                                      242, 242, 245, 100),
-                                                ),
-                                                RadioListTile(
-                                                  activeColor:
-                                                      const Color.fromRGBO(
-                                                          1, 163, 159, 100),
-                                                  value: 1,
-                                                  groupValue: groupValue,
-                                                  title: Text(
-                                                    "Repeat Every",
-                                                    style: GoogleFonts.nunito(
-                                                      fontSize: 18,
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                    ),
-                                                  ),
-                                                  subtitle: groupValue == 1
-                                                      ? repeatOnTileSubTitle(
-                                                          selectedWeekDays: Step2
-                                                              .selectedWeekDays,
-                                                          onSelected:
-                                                              (selectedWeekDays) {
-                                                            setState(() {
-                                                              Step2.selectedWeekDays =
-                                                                  selectedWeekDays;
-                                                            });
-                                                          },
-                                                        )
-                                                      : null,
-                                                  onChanged: (value) {
-                                                    setState(() {
-                                                      groupValue = value;
-                                                    });
-                                                  },
-                                                ),
-                                                const Divider(
-                                                  thickness: 14,
-                                                  color: Color.fromRGBO(
-                                                      242, 242, 245, 100),
-                                                ),
-                                                Padding(
-                                                  padding: const EdgeInsets.all(
-                                                      16.0),
-                                                  child: Text(
-                                                    "End Recurrence",
-                                                    style: GoogleFonts.nunito(
-                                                      fontSize: 18,
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                    ),
-                                                  ),
-                                                ),
-                                                RadioListTile(
-                                                  activeColor:
-                                                      const Color.fromRGBO(
-                                                          1, 163, 159, 100),
-                                                  value: 0,
-                                                  groupValue: selectedEndDate,
-                                                  title: Text(
-                                                    "Never",
-                                                    style: GoogleFonts.nunito(
-                                                      fontSize: 18,
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                    ),
-                                                  ),
-                                                  onChanged: (value) {
-                                                    setState(() {
-                                                      selectedEndDate = value;
-                                                    });
-                                                  },
-                                                ),
-                                                Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.start,
-                                                  children: [
-                                                    Container(
-                                                      width: 150,
-                                                      child: RadioListTile(
-                                                        activeColor: const Color
-                                                                .fromRGBO(
-                                                            1, 163, 159, 100),
-                                                        value: 1,
-                                                        groupValue:
-                                                            selectedEndDate,
-                                                        title: Text(
-                                                          "On",
-                                                          style: GoogleFonts
-                                                              .nunito(
-                                                            fontSize: 18,
-                                                            fontWeight:
-                                                                FontWeight.w600,
-                                                          ),
-                                                        ),
-                                                        onChanged: (value) {
-                                                          setState(() {
-                                                            selectedEndDate =
-                                                                value;
-                                                          });
-                                                        },
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      width: 150,
-                                                      child: selectedEndDate ==
-                                                              1
-                                                          ? _textFormFieldCreateEventStep2(
-                                                              "")
-                                                          : Container(),
-                                                    )
-                                                  ],
-                                                ),
-                                                Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
-                                                  children: [
-                                                    Container(
-                                                      width: 150,
-                                                      child: RadioListTile(
-                                                        activeColor: const Color
-                                                                .fromRGBO(
-                                                            1, 163, 159, 100),
-                                                        value: 2,
-                                                        groupValue:
-                                                            selectedEndDate,
-                                                        title: Text(
-                                                          "After",
-                                                          style: GoogleFonts
-                                                              .nunito(
-                                                            fontSize: 18,
-                                                            fontWeight:
-                                                                FontWeight.w600,
-                                                          ),
-                                                        ),
-                                                        onChanged: (value) {
-                                                          setState(() {
-                                                            selectedEndDate =
-                                                                value;
-                                                          });
-                                                        },
-                                                      ),
-                                                    ),
-                                                    selectedEndDate == 2
-                                                        ? Container(
-                                                            width: 50,
-                                                            child:
-                                                                _textFormFieldCreateEventStep2(
-                                                                    ""),
-                                                          )
-                                                        : Container(),
-                                                    selectedEndDate == 2
-                                                        ? Text(
-                                                            "Occurences",
-                                                            style: GoogleFonts
-                                                                .nunito(
-                                                              fontSize: 16,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600,
-                                                            ),
-                                                          )
-                                                        : Container(),
-                                                  ],
-                                                ),
-                                                Expanded(
-                                                  child: Align(
-                                                    alignment:
-                                                        Alignment.bottomCenter,
-                                                    child: Column(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment.end,
-                                                      children: [
-                                                        Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                      .symmetric(
-                                                                  vertical: 8.0,
-                                                                  horizontal:
-                                                                      8.0),
-                                                          child: Container(
-                                                            width:
-                                                                double.infinity,
-                                                            child:
-                                                                MaterialButton(
-                                                              onPressed: () {
-                                                                Navigator.of(
-                                                                        context)
-                                                                    .pop();
-                                                              },
-                                                              color: const Color
-                                                                      .fromRGBO(
-                                                                  1,
-                                                                  163,
-                                                                  159,
-                                                                  100),
-                                                              shape:
-                                                                  RoundedRectangleBorder(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            5),
-                                                              ),
-                                                              padding: const EdgeInsets
-                                                                      .symmetric(
-                                                                  vertical: 15,
-                                                                  horizontal:
-                                                                      30),
-                                                              child: Text(
-                                                                "Done",
-                                                                style: GoogleFonts.nunito(
-                                                                    color: Colors
-                                                                        .white,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w500),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        const Divider(
-                                                          thickness: 2,
-                                                          color: Color.fromRGBO(
-                                                              242,
-                                                              242,
-                                                              245,
-                                                              100),
-                                                        ),
-                                                        TextButton(
-                                                          onPressed: () {
-                                                            Navigator.of(
-                                                                    context)
-                                                                .pop();
-                                                            setState(() {
-                                                              value = false;
-                                                            });
-                                                          },
-                                                          child: Text(
-                                                            "Close",
-                                                            style: GoogleFonts
-                                                                .nunito(
-                                                              color: const Color
-                                                                      .fromRGBO(
-                                                                  253,
-                                                                  87,
-                                                                  87,
-                                                                  100),
-                                                              fontSize: 18,
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            )
-                                          : Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                const SizedBox(
-                                                  height: 10,
-                                                ),
-                                                Text(
-                                                  "Set recurrence",
-                                                  style: GoogleFonts.nunito(
-                                                    fontSize: 18,
-                                                    color: const Color.fromRGBO(
-                                                        1, 163, 159, 100),
-                                                    fontWeight: FontWeight.bold,
-                                                  ),
-                                                ),
-                                                const SizedBox(
-                                                  height: 10,
-                                                ),
-                                                Text(
-                                                  "Everyday",
-                                                  style: GoogleFonts.nunito(
-                                                    fontSize: 16,
-                                                  ),
-                                                ),
-                                                const SizedBox(
-                                                  height: 15,
-                                                ),
-                                                Text(
-                                                  "Every Week",
-                                                  style: GoogleFonts.nunito(
-                                                    fontSize: 16,
-                                                  ),
-                                                ),
-                                                const SizedBox(
-                                                  height: 15,
-                                                ),
-                                                Text(
-                                                  "Every Month",
-                                                  style: GoogleFonts.nunito(
-                                                    fontSize: 16,
-                                                  ),
-                                                ),
-                                                const SizedBox(
-                                                  height: 15,
-                                                ),
-                                                Text(
-                                                  "Every Year",
-                                                  style: GoogleFonts.nunito(
-                                                    fontSize: 16,
-                                                  ),
-                                                ),
-                                                const SizedBox(
-                                                  height: 15,
-                                                ),
-                                                const Divider(
-                                                  thickness: 2,
-                                                  color: Color.fromRGBO(
-                                                      242, 242, 245, 100),
-                                                ),
-                                                ListTile(
-                                                  title: Text(
-                                                    "Set custom reccurence",
-                                                    style: GoogleFonts.nunito(
-                                                      fontSize: 18,
-                                                      color:
-                                                          const Color.fromRGBO(
-                                                              72, 72, 74, 100),
-                                                    ),
-                                                  ),
-                                                  trailing: Switch(
-                                                    inactiveThumbColor:
-                                                        Colors.white,
-                                                    activeColor:
-                                                        const Color.fromRGBO(
-                                                            1, 163, 159, 100),
-                                                    value: Step2
-                                                        .setCustomRecurrence,
-                                                    onChanged: (value) {
-                                                      setState(() {
-                                                        Step2.setCustomRecurrence =
-                                                            value;
-                                                      });
-                                                    },
-                                                  ),
-                                                ),
-                                                const Divider(
-                                                  thickness: 2,
-                                                  color: Color.fromRGBO(
-                                                      242, 242, 245, 100),
-                                                ),
-                                                Expanded(
-                                                  child: Align(
-                                                    alignment:
-                                                        Alignment.bottomCenter,
-                                                    child: Column(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment.end,
-                                                      children: [
-                                                        const Divider(
-                                                          thickness: 2,
-                                                          color: Color.fromRGBO(
-                                                              242,
-                                                              242,
-                                                              245,
-                                                              100),
-                                                        ),
-                                                        TextButton(
-                                                          onPressed: () {
-                                                            Navigator.of(
-                                                                    context)
-                                                                .pop();
-                                                            setState(() {
-                                                              value = false;
-                                                            });
-                                                          },
-                                                          child: Text(
-                                                            "Close",
-                                                            style: GoogleFonts
-                                                                .nunito(
-                                                              color: const Color
-                                                                      .fromRGBO(
-                                                                  253,
-                                                                  87,
-                                                                  87,
-                                                                  100),
-                                                              fontSize: 18,
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                    ),
-                                  ),
-                                );
-                              });
-                            });
-                      }
-                      setState(() {
-                        Step2.isRecurringEvent = value;
-                      });
-                    },
-                  ),
-                ),
+                // ListTile(
+                //   title: Row(
+                //     children: [
+                //       Text(
+                //         "Recurring event",
+                //         style: GoogleFonts.nunito(
+                //           fontSize: 18,
+                //           color: const Color.fromRGBO(72, 72, 74, 100),
+                //         ),
+                //       ),
+                //       const SizedBox(
+                //         width: 10,
+                //       ),
+                //       const Icon(
+                //         Icons.info_outline_rounded,
+                //         color: Color.fromRGBO(1, 163, 159, 100),
+                //       ),
+                //     ],
+                //   ),
+                //   trailing: Switch(
+                //     inactiveThumbColor: Colors.white,
+                //     activeColor: const Color.fromRGBO(1, 163, 159, 100),
+                //     value: Step2.isRecurringEvent,
+                //     onChanged: (value) {
+                //       if (value == true) {
+                //         int? groupValue = 0;
+                //         int? selectedEndDate = 0;
+                //         showModalBottomSheet(
+                //             isScrollControlled: true,
+                //             useSafeArea: true,
+                //             shape: const RoundedRectangleBorder(
+                //               borderRadius: BorderRadius.vertical(
+                //                 top: Radius.circular(20.0),
+                //               ),
+                //             ),
+                //             context: context,
+                //             builder: (context) {
+                //               return StatefulBuilder(
+                //                   builder: (context, setState) {
+                //                 return SingleChildScrollView(
+                //                   child: Container(
+                //                     decoration: const BoxDecoration(
+                //                       color: Colors.white,
+                //                       borderRadius: BorderRadius.vertical(
+                //                         top: Radius.circular(16),
+                //                       ),
+                //                     ),
+                //                     width: double.infinity,
+                //                     height: MediaQuery.of(context).size.height *
+                //                         0.9,
+                //                     child: Padding(
+                //                       padding: const EdgeInsets.symmetric(
+                //                         horizontal: 8.0,
+                //                         vertical: 16,
+                //                       ),
+                //                       child: Step2.setCustomRecurrence
+                //                           ? Column(
+                //                               crossAxisAlignment:
+                //                                   CrossAxisAlignment.start,
+                //                               children: [
+                //                                 ListTile(
+                //                                   title: Text(
+                //                                     "Set custom reccurence",
+                //                                     style: GoogleFonts.nunito(
+                //                                       fontSize: 18,
+                //                                       color:
+                //                                           const Color.fromRGBO(
+                //                                               1, 163, 159, 100),
+                //                                     ),
+                //                                   ),
+                //                                   trailing: Switch(
+                //                                     inactiveThumbColor:
+                //                                         Colors.white,
+                //                                     activeColor:
+                //                                         const Color.fromRGBO(
+                //                                             1, 163, 159, 100),
+                //                                     value: Step2
+                //                                         .setCustomRecurrence,
+                //                                     onChanged: (value) {
+                //                                       setState(() {
+                //                                         Step2.setCustomRecurrence =
+                //                                             value;
+                //                                       });
+                //                                     },
+                //                                   ),
+                //                                 ),
+                //                                 const Divider(
+                //                                   thickness: 2,
+                //                                   color: Color.fromRGBO(
+                //                                       242, 242, 245, 100),
+                //                                 ),
+                //                                 RadioListTile(
+                //                                   activeColor:
+                //                                       const Color.fromRGBO(
+                //                                           1, 163, 159, 100),
+                //                                   value: 0,
+                //                                   groupValue: groupValue,
+                //                                   title: Text(
+                //                                     "Repeat Every",
+                //                                     style: GoogleFonts.nunito(
+                //                                       fontSize: 18,
+                //                                       fontWeight:
+                //                                           FontWeight.w600,
+                //                                     ),
+                //                                   ),
+                //                                   subtitle: groupValue == 0
+                //                                       ? repeatEveryTileSubTitle()
+                //                                       : null,
+                //                                   onChanged: (value) {
+                //                                     setState(() {
+                //                                       groupValue = value;
+                //                                     });
+                //                                   },
+                //                                 ),
+                //                                 const Divider(
+                //                                   thickness: 2,
+                //                                   color: Color.fromRGBO(
+                //                                       242, 242, 245, 100),
+                //                                 ),
+                //                                 RadioListTile(
+                //                                   activeColor:
+                //                                       const Color.fromRGBO(
+                //                                           1, 163, 159, 100),
+                //                                   value: 1,
+                //                                   groupValue: groupValue,
+                //                                   title: Text(
+                //                                     "Repeat Every",
+                //                                     style: GoogleFonts.nunito(
+                //                                       fontSize: 18,
+                //                                       fontWeight:
+                //                                           FontWeight.w600,
+                //                                     ),
+                //                                   ),
+                //                                   subtitle: groupValue == 1
+                //                                       ? repeatOnTileSubTitle(
+                //                                           selectedWeekDays: Step2
+                //                                               .selectedWeekDays,
+                //                                           onSelected:
+                //                                               (selectedWeekDays) {
+                //                                             setState(() {
+                //                                               Step2.selectedWeekDays =
+                //                                                   selectedWeekDays;
+                //                                             });
+                //                                           },
+                //                                         )
+                //                                       : null,
+                //                                   onChanged: (value) {
+                //                                     setState(() {
+                //                                       groupValue = value;
+                //                                     });
+                //                                   },
+                //                                 ),
+                //                                 const Divider(
+                //                                   thickness: 14,
+                //                                   color: Color.fromRGBO(
+                //                                       242, 242, 245, 100),
+                //                                 ),
+                //                                 Padding(
+                //                                   padding: const EdgeInsets.all(
+                //                                       16.0),
+                //                                   child: Text(
+                //                                     "End Recurrence",
+                //                                     style: GoogleFonts.nunito(
+                //                                       fontSize: 18,
+                //                                       fontWeight:
+                //                                           FontWeight.w600,
+                //                                     ),
+                //                                   ),
+                //                                 ),
+                //                                 RadioListTile(
+                //                                   activeColor:
+                //                                       const Color.fromRGBO(
+                //                                           1, 163, 159, 100),
+                //                                   value: 0,
+                //                                   groupValue: selectedEndDate,
+                //                                   title: Text(
+                //                                     "Never",
+                //                                     style: GoogleFonts.nunito(
+                //                                       fontSize: 18,
+                //                                       fontWeight:
+                //                                           FontWeight.w600,
+                //                                     ),
+                //                                   ),
+                //                                   onChanged: (value) {
+                //                                     setState(() {
+                //                                       selectedEndDate = value;
+                //                                     });
+                //                                   },
+                //                                 ),
+                //                                 Row(
+                //                                   mainAxisAlignment:
+                //                                       MainAxisAlignment.start,
+                //                                   children: [
+                //                                     Container(
+                //                                       width: 150,
+                //                                       child: RadioListTile(
+                //                                         activeColor: const Color
+                //                                                 .fromRGBO(
+                //                                             1, 163, 159, 100),
+                //                                         value: 1,
+                //                                         groupValue:
+                //                                             selectedEndDate,
+                //                                         title: Text(
+                //                                           "On",
+                //                                           style: GoogleFonts
+                //                                               .nunito(
+                //                                             fontSize: 18,
+                //                                             fontWeight:
+                //                                                 FontWeight.w600,
+                //                                           ),
+                //                                         ),
+                //                                         onChanged: (value) {
+                //                                           setState(() {
+                //                                             selectedEndDate =
+                //                                                 value;
+                //                                           });
+                //                                         },
+                //                                       ),
+                //                                     ),
+                //                                     Container(
+                //                                       width: 150,
+                //                                       child: selectedEndDate ==
+                //                                               1
+                //                                           ? _textFormFieldCreateEventStep2(
+                //                                               "")
+                //                                           : Container(),
+                //                                     )
+                //                                   ],
+                //                                 ),
+                //                                 Row(
+                //                                   mainAxisAlignment:
+                //                                       MainAxisAlignment
+                //                                           .spaceBetween,
+                //                                   children: [
+                //                                     Container(
+                //                                       width: 150,
+                //                                       child: RadioListTile(
+                //                                         activeColor: const Color
+                //                                                 .fromRGBO(
+                //                                             1, 163, 159, 100),
+                //                                         value: 2,
+                //                                         groupValue:
+                //                                             selectedEndDate,
+                //                                         title: Text(
+                //                                           "After",
+                //                                           style: GoogleFonts
+                //                                               .nunito(
+                //                                             fontSize: 18,
+                //                                             fontWeight:
+                //                                                 FontWeight.w600,
+                //                                           ),
+                //                                         ),
+                //                                         onChanged: (value) {
+                //                                           setState(() {
+                //                                             selectedEndDate =
+                //                                                 value;
+                //                                           });
+                //                                         },
+                //                                       ),
+                //                                     ),
+                //                                     selectedEndDate == 2
+                //                                         ? Container(
+                //                                             width: 50,
+                //                                             child:
+                //                                                 _textFormFieldCreateEventStep2(
+                //                                                     ""),
+                //                                           )
+                //                                         : Container(),
+                //                                     selectedEndDate == 2
+                //                                         ? Text(
+                //                                             "Occurences",
+                //                                             style: GoogleFonts
+                //                                                 .nunito(
+                //                                               fontSize: 16,
+                //                                               fontWeight:
+                //                                                   FontWeight
+                //                                                       .w600,
+                //                                             ),
+                //                                           )
+                //                                         : Container(),
+                //                                   ],
+                //                                 ),
+                //                                 Expanded(
+                //                                   child: Align(
+                //                                     alignment:
+                //                                         Alignment.bottomCenter,
+                //                                     child: Column(
+                //                                       mainAxisAlignment:
+                //                                           MainAxisAlignment.end,
+                //                                       children: [
+                //                                         Padding(
+                //                                           padding:
+                //                                               const EdgeInsets
+                //                                                       .symmetric(
+                //                                                   vertical: 8.0,
+                //                                                   horizontal:
+                //                                                       8.0),
+                //                                           child: Container(
+                //                                             width:
+                //                                                 double.infinity,
+                //                                             child:
+                //                                                 MaterialButton(
+                //                                               onPressed: () {
+                //                                                 Navigator.of(
+                //                                                         context)
+                //                                                     .pop();
+                //                                               },
+                //                                               color: const Color
+                //                                                       .fromRGBO(
+                //                                                   1,
+                //                                                   163,
+                //                                                   159,
+                //                                                   100),
+                //                                               shape:
+                //                                                   RoundedRectangleBorder(
+                //                                                 borderRadius:
+                //                                                     BorderRadius
+                //                                                         .circular(
+                //                                                             5),
+                //                                               ),
+                //                                               padding: const EdgeInsets
+                //                                                       .symmetric(
+                //                                                   vertical: 15,
+                //                                                   horizontal:
+                //                                                       30),
+                //                                               child: Text(
+                //                                                 "Done",
+                //                                                 style: GoogleFonts.nunito(
+                //                                                     color: Colors
+                //                                                         .white,
+                //                                                     fontWeight:
+                //                                                         FontWeight
+                //                                                             .w500),
+                //                                               ),
+                //                                             ),
+                //                                           ),
+                //                                         ),
+                //                                         const Divider(
+                //                                           thickness: 2,
+                //                                           color: Color.fromRGBO(
+                //                                               242,
+                //                                               242,
+                //                                               245,
+                //                                               100),
+                //                                         ),
+                //                                         TextButton(
+                //                                           onPressed: () {
+                //                                             Navigator.of(
+                //                                                     context)
+                //                                                 .pop();
+                //                                             setState(() {
+                //                                               value = false;
+                //                                             });
+                //                                           },
+                //                                           child: Text(
+                //                                             "Close",
+                //                                             style: GoogleFonts
+                //                                                 .nunito(
+                //                                               color: const Color
+                //                                                       .fromRGBO(
+                //                                                   253,
+                //                                                   87,
+                //                                                   87,
+                //                                                   100),
+                //                                               fontSize: 18,
+                //                                             ),
+                //                                           ),
+                //                                         ),
+                //                                       ],
+                //                                     ),
+                //                                   ),
+                //                                 ),
+                //                               ],
+                //                             )
+                //                           : Column(
+                //                               crossAxisAlignment:
+                //                                   CrossAxisAlignment.start,
+                //                               children: [
+                //                                 const SizedBox(
+                //                                   height: 10,
+                //                                 ),
+                //                                 Text(
+                //                                   "Set recurrence",
+                //                                   style: GoogleFonts.nunito(
+                //                                     fontSize: 18,
+                //                                     color: const Color.fromRGBO(
+                //                                         1, 163, 159, 100),
+                //                                     fontWeight: FontWeight.bold,
+                //                                   ),
+                //                                 ),
+                //                                 const SizedBox(
+                //                                   height: 10,
+                //                                 ),
+                //                                 Text(
+                //                                   "Everyday",
+                //                                   style: GoogleFonts.nunito(
+                //                                     fontSize: 16,
+                //                                   ),
+                //                                 ),
+                //                                 const SizedBox(
+                //                                   height: 15,
+                //                                 ),
+                //                                 Text(
+                //                                   "Every Week",
+                //                                   style: GoogleFonts.nunito(
+                //                                     fontSize: 16,
+                //                                   ),
+                //                                 ),
+                //                                 const SizedBox(
+                //                                   height: 15,
+                //                                 ),
+                //                                 Text(
+                //                                   "Every Month",
+                //                                   style: GoogleFonts.nunito(
+                //                                     fontSize: 16,
+                //                                   ),
+                //                                 ),
+                //                                 const SizedBox(
+                //                                   height: 15,
+                //                                 ),
+                //                                 Text(
+                //                                   "Every Year",
+                //                                   style: GoogleFonts.nunito(
+                //                                     fontSize: 16,
+                //                                   ),
+                //                                 ),
+                //                                 const SizedBox(
+                //                                   height: 15,
+                //                                 ),
+                //                                 const Divider(
+                //                                   thickness: 2,
+                //                                   color: Color.fromRGBO(
+                //                                       242, 242, 245, 100),
+                //                                 ),
+                //                                 ListTile(
+                //                                   title: Text(
+                //                                     "Set custom reccurence",
+                //                                     style: GoogleFonts.nunito(
+                //                                       fontSize: 18,
+                //                                       color:
+                //                                           const Color.fromRGBO(
+                //                                               72, 72, 74, 100),
+                //                                     ),
+                //                                   ),
+                //                                   trailing: Switch(
+                //                                     inactiveThumbColor:
+                //                                         Colors.white,
+                //                                     activeColor:
+                //                                         const Color.fromRGBO(
+                //                                             1, 163, 159, 100),
+                //                                     value: Step2
+                //                                         .setCustomRecurrence,
+                //                                     onChanged: (value) {
+                //                                       setState(() {
+                //                                         Step2.setCustomRecurrence =
+                //                                             value;
+                //                                       });
+                //                                     },
+                //                                   ),
+                //                                 ),
+                //                                 const Divider(
+                //                                   thickness: 2,
+                //                                   color: Color.fromRGBO(
+                //                                       242, 242, 245, 100),
+                //                                 ),
+                //                                 Expanded(
+                //                                   child: Align(
+                //                                     alignment:
+                //                                         Alignment.bottomCenter,
+                //                                     child: Column(
+                //                                       mainAxisAlignment:
+                //                                           MainAxisAlignment.end,
+                //                                       children: [
+                //                                         const Divider(
+                //                                           thickness: 2,
+                //                                           color: Color.fromRGBO(
+                //                                               242,
+                //                                               242,
+                //                                               245,
+                //                                               100),
+                //                                         ),
+                //                                         TextButton(
+                //                                           onPressed: () {
+                //                                             Navigator.of(
+                //                                                     context)
+                //                                                 .pop();
+                //                                             setState(() {
+                //                                               value = false;
+                //                                             });
+                //                                           },
+                //                                           child: Text(
+                //                                             "Close",
+                //                                             style: GoogleFonts
+                //                                                 .nunito(
+                //                                               color: const Color
+                //                                                       .fromRGBO(
+                //                                                   253,
+                //                                                   87,
+                //                                                   87,
+                //                                                   100),
+                //                                               fontSize: 18,
+                //                                             ),
+                //                                           ),
+                //                                         ),
+                //                                       ],
+                //                                     ),
+                //                                   ),
+                //                                 )
+                //                               ],
+                //                             ),
+                //                     ),
+                //                   ),
+                //                 );
+                //               });
+                //             });
+                //       }
+                //       setState(() {
+                //         Step2.isRecurringEvent = value;
+                //       });
+                //     },
+                //   ),
+                // ),
                 const Divider(
                   thickness: 2,
                   color: Color.fromRGBO(242, 242, 245, 100),
                 ),
-                // const SizedBox(
-                //   height: 30,
-                // ),
+                const SizedBox(
+                  height: 30,
+                ),
                 ListTile(
                   title: Row(
                     children: [

@@ -9,6 +9,7 @@ import 'package:volstory_app/screens/login_process/verification_screen.dart';
 import 'package:volstory_app/screens/main_pages/create_event/step_1/step_1.dart';
 import 'package:volstory_app/screens/main_pages/create_event/step_2/step_2.dart';
 import 'package:volstory_app/screens/main_pages/create_event/step_3/step_3.dart';
+import 'package:volstory_app/screens/main_pages/create_event/step_4/step_4.dart';
 
 import 'package:volstory_app/tabs.dart';
 
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      initialRoute: '/step2',
+      initialRoute: '/step3',
       routes: {
         '/': (context) => const SplashScreen(),
         '/verification': (context) => const VerficationScreen(),
@@ -43,6 +44,7 @@ class MyApp extends StatelessWidget {
         '/step1': (context) => const Step1(),
         '/step2': (context) => const Step2(),
         '/step3': (context) => const Step3(),
+        '/step4': (context) => const Step4(),
       },
     );
   }
