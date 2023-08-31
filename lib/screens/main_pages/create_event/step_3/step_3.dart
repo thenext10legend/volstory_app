@@ -7,8 +7,10 @@ import 'package:volstory_app/utils/common_widgets.dart';
 
 class Step3 extends StatefulWidget {
   const Step3({super.key});
-  static int minSlotMembers = 1;
-  static int maxSlotMembers = 100;
+  static int minSlotMembersForEvent = 1;
+  static int maxSlotMembersForEvent = 100;
+  static int minSlotMembersForGroups = 1;
+  static int maxSlotMembersForGroups = 100;
   static bool showPerks = false;
   static bool createSkillGroups = false;
 
@@ -70,9 +72,10 @@ class _Step3State extends State<Step3> {
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-                    _eventTimeSlotsMembersCount(Step3.minSlotMembers, (value) {
+                    _eventTimeSlotsMembersCount(Step3.minSlotMembersForEvent,
+                        (value) {
                       setState(() {
-                        Step3.minSlotMembers =
+                        Step3.minSlotMembersForEvent =
                             int.parse(value.replaceAll(',', ''));
                       });
                     }, 99, null, 60),
@@ -87,12 +90,13 @@ class _Step3State extends State<Step3> {
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-                    _eventTimeSlotsMembersCount(Step3.maxSlotMembers, (value) {
+                    _eventTimeSlotsMembersCount(Step3.maxSlotMembersForEvent,
+                        (value) {
                       setState(() {
-                        Step3.maxSlotMembers =
+                        Step3.maxSlotMembersForEvent =
                             int.parse(value.replaceAll(',', ''));
                       });
-                    }, Step3.maxSlotMembers, Step3.maxSlotMembers, 70),
+                    }, 100, null, 70),
                   ],
                 ),
               ),
@@ -395,10 +399,11 @@ class _Step3State extends State<Step3> {
                                                   ),
                                                 ),
                                                 _eventTimeSlotsMembersCount(
-                                                    Step3.minSlotMembers,
+                                                    Step3
+                                                        .minSlotMembersForGroups,
                                                     (value) {
                                                   setState(() {
-                                                    Step3.minSlotMembers =
+                                                    Step3.minSlotMembersForGroups =
                                                         int.parse(
                                                             value.replaceAll(
                                                                 ',', ''));
@@ -417,16 +422,16 @@ class _Step3State extends State<Step3> {
                                                   ),
                                                 ),
                                                 _eventTimeSlotsMembersCount(
-                                                    Step3.maxSlotMembers,
+                                                    Step3
+                                                        .maxSlotMembersForGroups,
                                                     (value) {
                                                   setState(() {
-                                                    Step3.maxSlotMembers =
+                                                    Step3.maxSlotMembersForGroups =
                                                         int.parse(
                                                             value.replaceAll(
                                                                 ',', ''));
                                                   });
-                                                }, Step3.maxSlotMembers,
-                                                    Step3.maxSlotMembers, 70),
+                                                }, 100, null, 70),
                                               ],
                                             ),
                                           ),

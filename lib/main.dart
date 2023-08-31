@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      initialRoute: '/step3',
+      initialRoute: '/step4',
       routes: {
         '/': (context) => const SplashScreen(),
         '/verification': (context) => const VerficationScreen(),
