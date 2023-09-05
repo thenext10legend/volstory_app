@@ -6,6 +6,7 @@ import 'package:volstory_app/utils/common_widgets.dart';
 
 class Step4 extends StatefulWidget {
   const Step4({super.key});
+  static bool setCustomConditions = false;
 
   @override
   State<Step4> createState() => _Step4State();
@@ -15,6 +16,7 @@ class _Step4State extends State<Step4> {
   int? groupValue = 0;
   int? tCGroupValue = 0;
   int groupsSelected = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -491,6 +493,7 @@ class _Step4State extends State<Step4> {
                       ),
                       onChanged: (value) {
                         setState(() {
+                          Step4.setCustomConditions = false;
                           tCGroupValue = value;
                         });
                       },
@@ -675,7 +678,12 @@ class _Step4State extends State<Step4> {
                                     child: Container(
                                       width: double.infinity,
                                       child: MaterialButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          setState(() {
+                                            Step4.setCustomConditions = true;
+                                          });
+                                          Navigator.of(context).pop();
+                                        },
                                         color: const Color.fromRGBO(
                                             1, 163, 159, 100),
                                         shape: RoundedRectangleBorder(
@@ -707,6 +715,49 @@ class _Step4State extends State<Step4> {
                   });
                 },
               ),
+              Step4.setCustomConditions
+                  ? Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      child: Container(
+                        width: double.infinity,
+                        child: OutlinedButton(
+                          onPressed: () {
+                            Navigator.of(context).pushNamed('/step4');
+                          },
+                          style: OutlinedButton.styleFrom(
+                            backgroundColor: Colors.white, // Background color
+                            side: BorderSide(
+                              color: const Color.fromRGBO(1, 163, 159, 100),
+                            ),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5),
+                            ), // Border color
+                          ),
+                          // padding: const EdgeInsets.symmetric(
+                          //     vertical: 15, horizontal: 30),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.file_upload_outlined,
+                                color: const Color.fromRGBO(1, 163, 159, 100),
+                              ),
+                              SizedBox(
+                                height: 30,
+                              ),
+                              Text(
+                                "Upload PDF File",
+                                style: GoogleFonts.nunito(
+                                  color: const Color.fromRGBO(1, 163, 159, 100),
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    )
+                  : Container(),
               const Divider(
                 thickness: 2,
                 color: Color.fromRGBO(242, 242, 245, 100),
@@ -721,7 +772,42 @@ class _Step4State extends State<Step4> {
                       width: double.infinity,
                       child: MaterialButton(
                         onPressed: () {
-                          Navigator.of(context).pushNamed('/step4');
+                          showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  backgroundColor: Colors.white,
+                                  content: Container(
+                                    height: 199,
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Image.asset(
+                                          "assets/images/eventConfirmationIcon.png",
+                                          width: 97,
+                                          height: 97,
+                                        ),
+                                        SizedBox(
+                                          height: 20,
+                                        ),
+                                        Text(
+                                          "Event has been created",
+                                          style: GoogleFonts.nunito(
+                                            fontSize: 22,
+                                            fontWeight: FontWeight.bold,
+                                            color: Color.fromRGBO(
+                                                1, 163, 159, 100),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              });
+                          Future.delayed(Duration(seconds: 3), () {
+                            Navigator.pushReplacementNamed(context, "/tabs");
+                          });
                         },
                         color: const Color.fromRGBO(1, 163, 159, 100),
                         shape: RoundedRectangleBorder(
