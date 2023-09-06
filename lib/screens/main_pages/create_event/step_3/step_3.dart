@@ -40,7 +40,7 @@ class _Step3State extends State<Step3> {
           thickness: 10,
           radius: const Radius.circular(20),
           scrollbarOrientation: ScrollbarOrientation.right,
-          isAlwaysShown: true,
+          //  isAlwaysShown: true,
           child: Column(
             // mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -618,7 +618,7 @@ class _Step3State extends State<Step3> {
                                                               5),
                                                     ),
                                                     padding: const EdgeInsets
-                                                            .symmetric(
+                                                        .symmetric(
                                                         vertical: 15,
                                                         horizontal: 30),
                                                     child: Text(
@@ -736,7 +736,7 @@ class _Step3State extends State<Step3> {
                                                               5),
                                                     ),
                                                     padding: const EdgeInsets
-                                                            .symmetric(
+                                                        .symmetric(
                                                         vertical: 15,
                                                         horizontal: 30),
                                                     child: Text(

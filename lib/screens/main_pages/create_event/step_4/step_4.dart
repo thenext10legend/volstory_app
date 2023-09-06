@@ -38,7 +38,7 @@ class _Step4State extends State<Step4> {
           thickness: 10,
           radius: const Radius.circular(20),
           scrollbarOrientation: ScrollbarOrientation.right,
-          isAlwaysShown: true,
+          //  isAlwaysShown: true,
           child: ListView(
             children: [
               bottomAppbar(4),

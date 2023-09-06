@@ -35,7 +35,7 @@ class _Step1State extends State<Step1> {
           thickness: 10,
           radius: Radius.circular(20),
           scrollbarOrientation: ScrollbarOrientation.right,
-          isAlwaysShown: true,
+          //   isAlwaysShown: true,
           child: ListView(
             children: [
               Container(

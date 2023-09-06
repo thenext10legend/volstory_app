@@ -40,7 +40,7 @@ class _Step2State extends State<Step2> {
           thickness: 10,
           radius: const Radius.circular(20),
           scrollbarOrientation: ScrollbarOrientation.right,
-          isAlwaysShown: true,
+          //  isAlwaysShown: true,
           child: SingleChildScrollView(
             child: ListView(
               // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -931,7 +931,7 @@ class _Step2State extends State<Step2> {
                                                       Alignment.bottomCenter,
                                                   child: Padding(
                                                     padding: const EdgeInsets
-                                                            .symmetric(
+                                                        .symmetric(
                                                         vertical: 8.0,
                                                         horizontal: 8.0),
                                                     child: Container(
@@ -945,7 +945,7 @@ class _Step2State extends State<Step2> {
                                                           });
                                                         },
                                                         color: const Color
-                                                                .fromRGBO(
+                                                            .fromRGBO(
                                                             1, 163, 159, 100),
                                                         shape:
                                                             RoundedRectangleBorder(
@@ -955,7 +955,7 @@ class _Step2State extends State<Step2> {
                                                         ),
                                                         padding:
                                                             const EdgeInsets
-                                                                    .symmetric(
+                                                                .symmetric(
                                                                 vertical: 15,
                                                                 horizontal: 30),
                                                         child: Text(
@@ -1053,7 +1053,7 @@ class _Step2State extends State<Step2> {
                                                                 .underline,
                                                         fontSize: 18,
                                                         color: const Color
-                                                                .fromRGBO(
+                                                            .fromRGBO(
                                                             72, 72, 84, 100),
                                                       ),
                                                     ),
@@ -1063,7 +1063,7 @@ class _Step2State extends State<Step2> {
                                                       style: GoogleFonts.nunito(
                                                         fontSize: 18,
                                                         color: const Color
-                                                                .fromRGBO(
+                                                            .fromRGBO(
                                                             72, 72, 84, 100),
                                                       ),
                                                     ),
@@ -1076,7 +1076,7 @@ class _Step2State extends State<Step2> {
                                                       Alignment.bottomCenter,
                                                   child: Padding(
                                                     padding: const EdgeInsets
-                                                            .symmetric(
+                                                        .symmetric(
                                                         vertical: 8.0,
                                                         horizontal: 8.0),
                                                     child: Container(
@@ -1089,7 +1089,7 @@ class _Step2State extends State<Step2> {
                                                           });
                                                         },
                                                         color: const Color
-                                                                .fromRGBO(
+                                                            .fromRGBO(
                                                             1, 163, 159, 100),
                                                         shape:
                                                             RoundedRectangleBorder(
@@ -1099,7 +1099,7 @@ class _Step2State extends State<Step2> {
                                                         ),
                                                         padding:
                                                             const EdgeInsets
-                                                                    .symmetric(
+                                                                .symmetric(
                                                                 vertical: 15,
                                                                 horizontal: 30),
                                                         child: Text(
