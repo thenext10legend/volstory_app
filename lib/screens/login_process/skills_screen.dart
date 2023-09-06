@@ -87,7 +87,7 @@ class _SkillsScreenState extends State<SkillsScreen> {
               runSpacing: 6.0,
               children: [
                 // chips not working yet have to change to flutterchip for better results
-                InputChip(
+                ChoiceChip(
                   label: const Text(
                     "Plantation",
                   ),
@@ -104,7 +104,7 @@ class _SkillsScreenState extends State<SkillsScreen> {
                     borderRadius: BorderRadius.circular(52),
                   ),
                 ),
-                InputChip(
+                ChoiceChip(
                   label: const Text(
                     "Driving",
                   ),
@@ -122,7 +122,7 @@ class _SkillsScreenState extends State<SkillsScreen> {
                     borderRadius: BorderRadius.circular(52),
                   ),
                 ),
-                InputChip(
+                ChoiceChip(
                   label: const Text(
                     "Design",
                   ),

@@ -45,6 +45,7 @@ dependencies:
   firebase_core: ^2.15.0
   google_sign_in: ^6.1.4
   quantity_input: ^1.0.2
+  input_quantity: ^1.2.3
 
 dev_dependencies:
   flutter_test:
@@ -74,6 +75,9 @@ flutter:
     - assets/images/VolstoryIcon.png
     - assets/images/google.png
     - assets/images/timeSlotsIcon.png
+    - assets/images/skillGroupsIcon.png
+    - assets/images/tncIcon.png
+    - assets/images/eventConfirmationIcon.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
